@@ -1,3 +1,12 @@
+--[[
+Project PAT V2 
+Project pat is a public anti tamper PUBLIC meaning nearly the full source just shit protection on one function
+Created by 0x3k_07
+Created on 27/12/23
+
+
+]]
+
 _G.Table = {
     antiPrintt = false, -- Follow format on line:
     antiBeautify = false, -- Line check from v1
