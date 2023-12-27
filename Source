@@ -1,0 +1,80 @@
+_G.Table = {
+    antiPrintt = false, -- Follow format on line:
+    antiBeautify = false, -- Line check from v1
+    antiDump = false, -- table.concat dumping
+}
+
+
+
+local _PAT_ = _G.Table
+
+--// Functions
+   local function antiPrint(...)
+  local _I = debug.getinfo(2)
+  if _I and _I.what == 'Lua' and _I.func == print then
+    return
+  end
+return(...)
+end
+
+local function Punish()
+    print('Punished')
+    end
+
+local lineNumberToCheck = 25 --// This checks local: Linez, it is set to the correct line
+
+
+local Linez = debug.getinfo(1, 'Sl')
+
+
+local obf_stringchar = string.char;
+local obf_stringbyte = string.byte;
+local obf_stringsub = string.sub;
+local obf_bitlib = bit32 or bit;
+local obf_XOR = obf_bitlib.bxor;
+local obf_tableconcat = table.concat;
+local obf_tableinsert = table.insert;
+local function LUAOBFUSACTOR_DECRYPT_STR_0(LUAOBFUSACTOR_STR, LUAOBFUSACTOR_KEY)
+	local result = {};
+	for i = 1, #LUAOBFUSACTOR_STR do
+		obf_tableinsert(result, obf_stringchar(obf_XOR(obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_STR, i, i + 1)), obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_KEY, 1 + (i % #LUAOBFUSACTOR_KEY), 1 + (i % #LUAOBFUSACTOR_KEY) + 1))) % 256));
+	end
+	return obf_tableconcat(result);
+end
+local i = 1;
+local o = 4;
+local a = LUAOBFUSACTOR_DECRYPT_STR_0("\214\198\207\44\232\189\200", "\126\177\163\187\69\134\219\167");
+local t = LUAOBFUSACTOR_DECRYPT_STR_0("\32\197\43\215", "\156\67\173\74\165");
+local e = 1;
+local funcs = {pcall,string[t],debug[a],table.concat};
+for i = i, #funcs do
+	local s = "C";
+	local n = LUAOBFUSACTOR_DECRYPT_STR_0("\35\191\72\2", "\38\84\215\41\118\220\70");
+	if (debug.getinfo(funcs[i])[n] ~= s) then
+		local r = false;
+		local h = LUAOBFUSACTOR_DECRYPT_STR_0("\111\38\22\45", "\158\48\118\66\114");
+		_G[h] = r;
+	end
+end
+            
+            
+      local _Pr = _G._PT_      
+if _PAT_.antiPrintt then
+  print = antiPrint
+    end
+
+if _PAT_.antiDump then
+    if _Pr == false then print("PatV2 possible dump detected") --[[Replace / add to this with what you want to happen such as print = antiPrint]] else print('No tampering')
+        end
+end
+
+if _PAT_.antiBeautify then
+ if Linez.currentline == lineNumberToCheck then
+  Prick = '' 
+else
+Punish()
+    end
+end
+
+print('Anti print test')
+
